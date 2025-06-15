@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Cofre - Etapa 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffccd5, #ffe6f0);
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #d63384;
+      text-align: center;
+      font-size: 28px;
+    }
+    p {
+      font-size: 18px;
+      color: #4b0082;
+    }
+    .respuesta-correcta {
+      display: none;
+      margin-top: 20px;
+      background-color: #f0fff4;
+      border: 2px dashed #77dd77;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .fragmento {
+      font-family: 'Courier New', monospace;
+      color: #ff69b4;
+      font-size: 22px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .barra-progreso {
+      width: 100%;
+      background-color: #ffe6f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    .progreso {
+      height: 20px;
+      width: 8%; /* 1 de 13 letras */
+      background-color: #d63384;
+      transition: width 1s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <h1>Etapa 1 – Primer Recuerdo</h1>
+  <p>
+    Fue un día normal,<br>
+    pero tú estabas especial.<br>
+    Fuimos a caminar, a comer o a ver…<br>
+    <strong>¿Qué hicimos la primera vez al salir por placer?</strong>
+  </p>
+  <input type="text" id="respuesta" placeholder="Escribe tu respuesta aquí...">
+  <button onclick="verificarRespuesta()">Verificar</button>
+
+  <div id="correcta" class="respuesta-correcta">
+    <p><strong>¡Correcto!</strong> Primera llave desbloqueada.</p>
+    <p class="fragmento">Fragmento revelado (codificado): <span style="color:#ff1493;">G</span></p>
+    <p><em>Pista: Algunas letras giran... ¿Podría G no ser realmente G?</em></p>
+    <p><strong>Pista secreta:</strong> Pronuncia en voz alta la palabra que estás formando con los fragmentos... 👀</p>
+    <!-- ROT13 de G es T -->
+  </div>
+
+  <div class="barra-progreso">
+    <div class="progreso" id="barra"></div>
+  </div>
+
+  <script>
+    function verificarRespuesta() {
+      const entrada = document.getElementById("respuesta").value.trim().toLowerCase();
+      if (entrada === "caminar") {
+        document.getElementById("correcta").style.display = "block";
+        document.getElementById("barra").style.width = "8%";
+      } else {
+        alert("Hmm... esa no parece ser la respuesta correcta. Intenta otra vez ♥");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Cofre - Etapa 5</title>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,105,180, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255,105,180, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,105,180, 0); }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffe6f0, #d0f0ff);
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-in;
+    }
+    h1 {
+      color: #6a1b9a;
+      text-align: center;
+      font-size: 32px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    p {
+      font-size: 18px;
+      color: #4b0082;
+      line-height: 1.6;
+    }
+    .respuesta-correcta {
+      display: none;
+      margin-top: 20px;
+      background: linear-gradient(145deg, #f0fff4, #f8f8ff);
+      border: 2px dashed #77dd77;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .fragmento {
+      font-family: 'Courier New', monospace;
+      color: #ff1493;
+      font-size: 24px;
+      animation: pulse 2s infinite;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 2px solid #7c4dff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1.5s ease-in;
+    }
+    button {
+      padding: 10px 24px;
+      font-size: 16px;
+      background-color: #7c4dff;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      animation: fadeIn 2s ease-in;
+    }
+    button:hover {
+      background-color: #b39ddb;
+    }
+    .barra-progreso {
+      width: 100%;
+      background-color: #e3e0f3;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+    .progreso {
+      height: 22px;
+      width: 76.9%;
+      background-color: #6a1b9a;
+      transition: width 1s ease-in-out;
+    }
+    .btn-final {
+      margin-top: 20px;
+      background-color: #43a047;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+    .btn-final:hover {
+      background-color: #66bb6a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Etapa 5 – Dulce Lugar</h1>
+  <p>
+    Su locación preferida,<br>
+    donde un chocolate nunca falta.<br>
+    Aunque no vivamos ahí,<br>
+    siempre que vamos, se siente magia.<br>
+    <strong>¿Dónde es este sitio encantado?</strong>
+  </p>
+  <input type="text" id="respuesta" placeholder="Escribe tu respuesta aquí...">
+  <button onclick="verificarRespuesta()">Verificar</button>
+
+  <div id="correcta" class="respuesta-correcta">
+    <p><strong>¡Correcto!</strong> Hay que ir de nuez.</p>
+    <p class="fragmento">Creo que es el ultimo: <span style="color:#ff1493;">bWFuZA==</span></p>
+    <p><em>Pista final: Divide el código y verás a una ciudad escondida donde las letras mandan...</em></p>
+    <p><strong>Escribe la palabra decifrada:</strong></p>
+
+    <input type="text" id="palabraClave" placeholder="¿Cuál es la palabra secreta?">
+    <button onclick="verificarPalabra()">Verificar palabra</button>
+
+    <div id="desbloqueo" style="display:none; margin-top:15px;">
+      <p style="color:green; font-weight:bold;">¡Correcto! ahora dilo en voz alta y ten fe 💖</p>
+      <button class="btn-final" id="btnFinal" onclick="finalJuego()">Finalizar</button>
+    </div>
+  </div>
+
+  <div class="barra-progreso">
+    <div class="progreso" id="barra"></div>
+  </div>
+
+  <script>
+    function verificarRespuesta() {
+      const entrada = document.getElementById("respuesta").value.trim().toLowerCase();
+      if (entrada === "coyoacan") {
+        document.getElementById("correcta").style.display = "block";
+        document.getElementById("barra").style.width = "100%";
+      } else {
+        alert("Hmm... intenta pensar en ese lugar donde siempre hay chocolate... 🍫, pst ya regresé de pasear a las máquinas");
+      }
+    }
+
+    function verificarPalabra() {
+      const clave = document.getElementById("palabraClave").value.trim().toLowerCase();
+      if (clave === "tangamandapio") {
+        document.getElementById("desbloqueo").style.display = "block";
+        document.getElementById("btnFinal").style.display = "inline-block";
+      } else {
+        alert("Esa no es la palabra mágica... intenta armar bien los fragmentos que te di por cada respuesta");
+      }
+    }
+
+    function finalJuego() {
+      window.location.href = "final.html";
+    }
+  </script>
+</body>
+</html>

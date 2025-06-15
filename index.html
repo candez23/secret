@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenida al Desafío</title>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #fce4ec, #e3f2fd);
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in;
+      text-align: center;
+    }
+
+    h1 {
+      color: #880e4f;
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #4b0082;
+      margin-bottom: 25px;
+    }
+
+    .alerta {
+      font-weight: bold;
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #7b1fa2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+
+    button:hover {
+      background-color: #ba68c8;
+    }
+  </style>
+</head>
+<body>
+  <h1>¡Bienvenida al Juego del Cofre!</h1>
+  <p>
+    Prepárate para un recorrido lleno de pistas, acertijos y sorpresas.<br>
+    Antes de comenzar, ten en cuenta:
+  </p>
+  <ul style="text-align: left; margin: 0 auto; max-width: 400px; color: #333;">
+    <li>Las respuestas deben escribirse <strong>en minúsculas</strong>.</li>
+    <li>Si la respuesta es una frase, <strong>usa espacios</strong> entre las palabras.</li>
+    <li>No uses acentos ni signos de puntuación.</li>
+  </ul>
+  <p class="alerta" id="mensajeAcceso">⏳ Esperando a que llegue el momento...</p>
+  <button id="btnEntrar" onclick="entrar()">Entrar al juego</button>
+
+  <script>
+    function revisarAcceso() {
+      const ahora = new Date();
+      const fechaObjetivo = new Date("2025-06-17T10:00:00-06:00"); 
+
+      if (ahora >= fechaObjetivo) {
+        document.getElementById("mensajeAcceso").innerText = "✅ Ya puedes entrar al desafío.";
+        document.getElementById("btnEntrar").style.display = "inline-block";
+      } else {
+        const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+        document.getElementById("mensajeAcceso").innerText =
+          "⏳ Aún no es tiempo. Vuelve el martes 17 de junio después de las 10:00 a. m.";
+        setTimeout(revisarAcceso, 60000); 
+      }
+    }
+
+    function entrar() {
+      window.location.href = "cartita 2.html"; 
+    }
+
+    revisarAcceso();
+  </script>
+</body>
+</html>

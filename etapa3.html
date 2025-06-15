@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Cofre - Etapa 3</title>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0,191,165, 0.6); }
+      70% { box-shadow: 0 0 0 10px rgba(0,191,165, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,191,165, 0); }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffe0f0);
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-in;
+    }
+    h1 {
+      color: #00695c;
+      text-align: center;
+      font-size: 32px;
+    }
+    p {
+      font-size: 18px;
+      color: #4a148c;
+      line-height: 1.6;
+    }
+    .respuesta-correcta {
+      display: none;
+      margin-top: 20px;
+      background: linear-gradient(145deg, #f0fff4, #d0fff2);
+      border: 2px dashed #26a69a;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .fragmento {
+      font-family: 'Courier New', monospace;
+      color: #009688;
+      font-size: 24px;
+      animation: pulse 2s infinite;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 2px solid #00acc1;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 24px;
+      font-size: 16px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #26c6da;
+    }
+    .barra-progreso {
+      width: 100%;
+      background-color: #e0f7fa;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+    .progreso {
+      height: 22px;
+      width: 30.8%;
+      background-color: #00796b;
+      transition: width 1s ease-in-out;
+    }
+    .btn-siguiente {
+      margin-top: 20px;
+      background-color: #43a047;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+    .btn-siguiente:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Etapa 3 – Donde todo empezó</h1>
+  <p>
+    Fue un rincón sencillo,<br>
+    pero ahí todo cambió,<br>
+    hablamos como niños,<br>
+    y el amor despertó.<br><br>
+    <strong>¿Cuál fue ese sitio?</strong>
+  </p>
+  <input type="text" id="respuesta" placeholder="Tu respuesta...">
+  <button onclick="verificarRespuesta()">Verificar</button>
+
+  <div id="correcta" class="respuesta-correcta">
+    <p><strong>¡Correcto!</strong> Que gran día fue.</p>
+    <p class="fragmento">ingaturroña 👀: <span>Z2Ft</span></p>
+    <p><em>¿Sabias que? En el mundo hay más de 10,000 especies de pájaros. ALV</em></p>
+    <button class="btn-siguiente" id="btnSiguiente" onclick="siguienteEtapa()">Siguiente etapa →</button>
+  </div>
+
+  <div class="barra-progreso">
+    <div class="progreso"></div>
+  </div>
+
+  <script>
+    function verificarRespuesta() {
+      const entrada = document.getElementById("respuesta").value.trim().toLowerCase();
+      if (entrada === "chapultepec") {
+        document.getElementById("correcta").style.display = "block";
+        document.querySelector(".progreso").style.width = "30.8%";
+        document.getElementById("btnSiguiente").style.display = "inline-block";
+      } else {
+        alert("¡Intenta de nuevo! Piensa en ese lugar mágico... conun gran castillo");
+      }
+    }
+
+    function siguienteEtapa() {
+      window.location.href = "etapa4.html";
+    }
+  </script>
+</body>
+</html>

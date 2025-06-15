@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Cofre - Etapa 1</title>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,105,180, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255,105,180, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,105,180, 0); }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffd6e0, #e0ffe0);
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-in;
+    }
+    h1 {
+      color: #c2185b;
+      text-align: center;
+      font-size: 32px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    p {
+      font-size: 18px;
+      color: #4b0082;
+      line-height: 1.6;
+    }
+    .respuesta-correcta {
+      display: none;
+      margin-top: 20px;
+      background: linear-gradient(145deg, #e0ffe0, #f0fff4);
+      border: 2px dashed #77dd77;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .fragmento {
+      font-family: 'Courier New', monospace;
+      color: #ff1493;
+      font-size: 24px;
+      animation: pulse 2s infinite;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 2px solid #ff69b4;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: fadeIn 1.5s ease-in;
+    }
+    button {
+      padding: 10px 24px;
+      font-size: 16px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      animation: fadeIn 2s ease-in;
+    }
+    button:hover {
+      background-color: #ff85c1;
+    }
+    .barra-progreso {
+      width: 100%;
+      background-color: #ffe6f0;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+    .progreso {
+      height: 22px;
+      width: 8%;
+      background-color: #c2185b;
+      transition: width 1s ease-in-out;
+    }
+    .btn-siguiente {
+      margin-top: 20px;
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+    .btn-siguiente:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Etapa 1 – Primer Recuerdo</h1>
+  <p>
+    Fue un día normal,<br>
+    pero tú te veias tan especial.<br>
+    Fuimos a conocernos mejor, a comer o a…<br>
+    <strong>¿Qué hicimos la primera vez al salir por placer, esa actividad que repetimos tanto en nuestras citas con más de "30 mil" momentos?</strong>
+  </p>
+  <input type="text" id="respuesta" placeholder="Escribe tu respuesta aquí...">
+  <button onclick="verificarRespuesta()">Verificar</button>
+
+  <div id="correcta" class="respuesta-correcta">
+    <p><strong>¡Correcto!</strong> Bien hecho!.</p>
+    <p class="fragmento"> Toma esto: <span style="color:#ff1493;">YW5k</span></p>
+    <p><em>Pista: ¡Guárdalo bien!</em></p>
+    <p><strong>Pista secreta:</strong> ¿Que será? 👀</p>
+    <button class="btn-siguiente" id="btnSiguiente" onclick="siguienteEtapa()">Siguiente etapa →</button>
+  </div>
+
+  <div class="barra-progreso">
+    <div class="progreso" id="barra"></div>
+  </div>
+
+  <script>
+    function verificarRespuesta() {
+      const entrada = document.getElementById("respuesta").value.trim().toLowerCase();
+      if (entrada === "caminar") {
+        document.getElementById("correcta").style.display = "block";
+        document.getElementById("barra").style.width = "8%";
+        document.getElementById("btnSiguiente").style.display = "inline-block";
+      } else {
+        alert("Hmm... esa no parece ser la respuesta correcta. Intenta recordar la acción fisica ♥");
+      }
+    }
+
+    function siguienteEtapa() {
+      window.location.href = "etapa2.html";
+    }
+  </script>
+</body>
+</html>
+
+    
+ 
